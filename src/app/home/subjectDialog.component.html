@@ -1,0 +1,10 @@
+<mat-dialog-content>
+    <p> Entrez le nom du sujet </p>
+    <mat-form-field>
+        <input matInput [(ngModel)]="subjectName" class="rounded-md"/>
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="onNoClick()"> Annuler </button>
+    <button mat-button [mat-dialog-close]="subjectName()"> Confirmer </button>
+</mat-dialog-actions>

@@ -1,0 +1,11 @@
+<h1 class="mt-6 px-5 text-center text-3xl"> Sujets </h1>
+
+<nav class="flex-col">
+@for (subject of subjects; track $index) {
+    <a [routerLink]="['subject', subject.name]" class="mt-3 px 4">
+        <h3 class="border-r-4 box-border"> {{ subject.name }}</h3>
+    </a>
+}
+</nav>
+
+<button mat-raised-button (click)="openDialog()"> Ajouter un sujet </button>
