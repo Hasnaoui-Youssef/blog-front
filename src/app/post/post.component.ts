@@ -8,7 +8,7 @@ import {MatDividerModule} from '@angular/material/divider';
   selector: 'app-post',
   imports: [MatCardModule, MatDividerModule],
   templateUrl: './post.component.html',
-  styleUrl: './post.component.css'
+  styleUrl: './post.component.scss'
 })
 export class PostComponent implements OnInit {
   postId : string = '';
@@ -16,7 +16,7 @@ export class PostComponent implements OnInit {
   comments : any[] = [];
   constructor(private readonly route : ActivatedRoute,readonly apiService : ApiService){}
   ngOnInit(): void {
-     this.postId = this.route.snapshot.paramMap.get('postid') || ''; 
+     this.postId = this.route.snapshot.paramMap.get('postid') || '';
      this.loadPost();
   }
   loadPost() : void {

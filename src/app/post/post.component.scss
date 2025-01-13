@@ -1,0 +1,22 @@
+@use '@angular/material' as mat;
+
+:host {
+  @include mat.card-overrides((
+    elevated-container-color : var(--mat-sys-surface-container),
+    subtitle-text-color : var(--mat-sys-secondary),
+    subtitle-text-weight : var(--mat-sys-title-small-weight),
+    subtitle-text-tracking : var(--mat-sys-title-small-tracking),
+  ));
+  @include mat.divider-overrides((
+    width : 1px
+  ));
+}
+.card-container {
+  width: 50%;
+  margin-left: 3vh;
+  p{
+    color : var(--mat-sys-secondary);
+    padding-bottom: 30px;
+  }
+  color : var(--mat-sys-on-primary-container)
+}

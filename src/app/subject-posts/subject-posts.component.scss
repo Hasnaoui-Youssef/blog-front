@@ -1,0 +1,52 @@
+@use '@angular/material' as mat;
+
+:host {
+  @include mat.table-overrides((
+    header-headline-font : var(--mat-sys-title-large-font),
+    header-headline-size : var(--mat-sys-title-large-size),
+    background-color : var(--mat-sys-secondary-container),
+    header-headline-color : var(--mat-sys-on-primary-container),
+  ));
+}
+
+h2{
+  text-align: left;
+  color : var(--mat-sys-on-inverse-primary);
+}
+a{
+  color : inherit;
+  text-decoration: none;
+  &::visited{
+    color : inherit;
+  }
+}
+table{
+  border-radius : var(--mat-sys-corner-large);
+  border-collapse : separate;
+  overflow: hidden;
+  align-self : center;
+}
+
+
+th:first-of-type,
+td:first-of-type{
+  border-top-left-radius: var(--mat-sys-corner-large);
+  text-indent: 2em;
+}
+
+th:last-of-type,
+td:last-of-type{
+  border-top-right-radius: var(--mat-sys-corner-large);
+}
+
+tr:last-of-type td:first-of-type{
+  border-bottom-left-radius: var(--mat-sys-corner-large);
+}
+
+tr:last-of-type td:last-of-type{
+  border-bottom-right-radius: var(--mat-sys-corner-large);
+}
+
+.mat-column-titre{
+  border-right: 1px solid currentColor;
+}
