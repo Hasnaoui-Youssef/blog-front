@@ -1,8 +1,18 @@
+@use '@angular/material' as mat;
+
+:host {
+  @include mat.sidenav-overrides((
+    container-background-color : var(--mat-sys-secondary),
+  ));
+  @include mat.list-overrides((
+    list-item-label-text-color : var(--mat-sys-on-secondary),
+  ));
+}
+
 h1{
   color : var(--mat-sys-on-primary-container);
   text-align: center;
 }
 .title-nav {
   align-items : center;
-  background-color: var(--mat-sys-primary-container);
 }

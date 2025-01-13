@@ -22,7 +22,7 @@ export interface DialogData{
   selector: 'app-home',
   imports: [ MatButtonModule, RouterLink],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
+  styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit {
   constructor( private apiService : ApiService ){}
@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit {
     MatInputModule,
     MatDialogContent,
     MatDialogActions,
-    MatDialogClose, 
+    MatDialogClose,
     MatButtonModule,
   ],
 })

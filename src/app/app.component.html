@@ -2,5 +2,18 @@
   <h1>Edumetric</h1>
 </nav>
 <main>
-  <router-outlet></router-outlet>
+  <mat-sidenav-container>
+    <mat-sidenav #sidenav mode="side">
+      <nav>
+        <mat-nav-list>
+          <mat-list-item><a routerLink="/" routerLinkActive="active" matListItemTitle> Accueil  </a></mat-list-item>
+          <mat-list-item><a routerLink="/edit" routerLinkActive="active" matListItemTitle> Editer  </a></mat-list-item>
+        </mat-nav-list>
+      </nav>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <button (click)="sidenav.toggle()">enzel</button>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </main>
