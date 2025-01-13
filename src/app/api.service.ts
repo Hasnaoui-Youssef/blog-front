@@ -15,6 +15,9 @@ export class ApiService {
   getSubjects() {
     return this.http.get(`${this.baseUrl}/subject`);
   }
+  getPostsForAllSubjects() {
+    return this.http.get(`${this.baseUrl}/post/by-name`);
+  }
 
   getPostsForSubject(name : string){
     const subject = name.trim();

@@ -14,18 +14,19 @@
 
 html {
   color-scheme: light dark;
+  background: var(--mat-sys-surface);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
   @include mat.theme((
     color: mat.$azure-palette,
     typography: Noto Sans Display,
     density: 0
   ));
-  background: var(--mat-sys-surface);
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-  height: 100vh;
 }
 body {
   color: var(--mat-sys-on-surface);
   font-family : Noto Sans Display;
+  min-height: 100vh;
+  margin : 0;
 }
 

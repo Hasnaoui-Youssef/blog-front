@@ -1,1 +1,50 @@
-<p>editing works!</p>
+<mat-accordion>
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Ajouter un sujet </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-form-field>
+      <mat-label>Nom du sujet</mat-label>
+      <input matInput/>
+    </mat-form-field>
+    <mat-action-row>
+      <button mat-button> Confirmer </button>
+    </mat-action-row>
+  </mat-expansion-panel>
+  <mat-expansion-panel >
+    <mat-expansion-panel-header>
+      <mat-panel-title> Supprimer un sujet </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-form-field>
+      <mat-label>Choisir un sujet</mat-label>
+      <mat-select>
+        @for( subject of subjects ; track $index){
+          <mat-option [value]="subject.name"> {{ subject.name}} </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <mat-action-row>
+      <button mat-button> Confirmer </button>
+    </mat-action-row>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Renommer un sujet </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-form-field>
+      <mat-label>Choisir un sujet</mat-label>
+      <mat-select>
+        @for( subject of subjects ; track $index){
+          <mat-option [value]="subject.name"> {{ subject.name}} </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Nouveau nom</mat-label>
+      <input matInput/>
+    </mat-form-field>
+    <mat-action-row>
+      <button mat-button> Confirmer </button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>

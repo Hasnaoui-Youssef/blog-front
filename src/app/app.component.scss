@@ -2,10 +2,10 @@
 
 :host {
   @include mat.sidenav-overrides((
-    container-background-color : var(--mat-sys-secondary),
+    container-background-color : var(--mat-sys-secondary-container),
   ));
   @include mat.list-overrides((
-    list-item-label-text-color : var(--mat-sys-on-secondary),
+    list-item-label-text-color : var(--mat-sys-on-secondary-container),
   ));
 }
 
@@ -15,4 +15,11 @@ h1{
 }
 .title-nav {
   align-items : center;
+}
+
+.side-nav-button {
+  position: fixed;
+  top : 10px;
+  right : 10px;
+  z-index: 1000;
 }

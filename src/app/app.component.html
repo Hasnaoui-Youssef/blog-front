@@ -1,19 +1,40 @@
-<nav class="title-nav">
-  <h1>Edumetric</h1>
-</nav>
 <main>
-  <mat-sidenav-container>
+  <mat-sidenav-container style="height: 100%;  display: grid;">
     <mat-sidenav #sidenav mode="side">
-      <nav>
         <mat-nav-list>
-          <mat-list-item><a routerLink="/" routerLinkActive="active" matListItemTitle> Accueil  </a></mat-list-item>
-          <mat-list-item><a routerLink="/edit" routerLinkActive="active" matListItemTitle> Editer  </a></mat-list-item>
+          @for( elem of sideNavComponent; track $index){
+                @if( elem.children ){
+                    <mat-expansion-panel>
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                          <mat-icon> {{ elem.icon}} </mat-icon>
+                          {{elem.title}}
+                        </mat-panel-title>
+                      </mat-expansion-panel-header>
+                      <mat-nav-list>
+                        @for(child of elem.children; track $index){
+                        <a matListItemTitle [routerLink]="child.link" routerLinkActive="active"> <mat-list-item> {{ child.title }} </mat-list-item></a>
+                        }
+                      </mat-nav-list>
+                    </mat-expansion-panel>
+                }
+                @else{
+                  <a matListItemTitle [routerLink]="elem.link" routerLinkActive="active"> <mat-list-item>
+                    <mat-icon> {{ elem.icon}} </mat-icon>
+                    {{ elem.title }}
+                  </mat-list-item></a>
+                }
+          }
+          <!--
+          <a routerLink="/" routerLinkActive="active" matListItemTitle>    <mat-list-item> Accueil </mat-list-item>  </a>
+          <a routerLink="/edit" routerLinkActive="active" matListItemTitle><mat-list-item> Editer  </mat-list-item>  </a>
+          <a routerLink="/write-post" routerLinkActive="active" matListItemTitle><mat-list-item> Ecrire un blog  </mat-list-item>  </a>
+          -->
         </mat-nav-list>
-      </nav>
     </mat-sidenav>
-    <mat-sidenav-content>
-      <button (click)="sidenav.toggle()">enzel</button>
-      <router-outlet></router-outlet>
+    <mat-sidenav-content style="width: 80%;  justify-self: center;">
+      <button (click)="sidenav.toggle()" mat-mini-fab class="side-nav-button"><mat-icon>menu</mat-icon></button>
+      <router-outlet ></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </main>
