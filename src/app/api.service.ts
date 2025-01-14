@@ -49,7 +49,7 @@ export class ApiService {
     return this.http.post(`${this.baseUrl}/post`, postDto);
   }
   createComment (postId : string,  commentDto : CreateCommentDto){
-    return this.http.post(`${this.baseUrl}/post/${postId}`, commentDto);
+    return this.http.post(`${this.baseUrl}/post/comment/${postId}`, commentDto);
   }
   updateComment( postId : string, commentId : string, content : string){
     return this.http.patch(`${this.baseUrl}/post/comment/${postId}`, {content}, {

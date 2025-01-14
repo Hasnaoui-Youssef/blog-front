@@ -5,10 +5,10 @@
     </mat-expansion-panel-header>
     <mat-form-field>
       <mat-label>Nom du sujet</mat-label>
-      <input matInput/>
+      <input matInput [(ngModel)]="newSubjectInput"/>
     </mat-form-field>
     <mat-action-row>
-      <button mat-button> Confirmer </button>
+      <button mat-button (click)="addSubject()"> Confirmer </button>
     </mat-action-row>
   </mat-expansion-panel>
   <mat-expansion-panel >
@@ -17,14 +17,14 @@
     </mat-expansion-panel-header>
     <mat-form-field>
       <mat-label>Choisir un sujet</mat-label>
-      <mat-select>
+      <mat-select [(ngModel)]="deleteSubjectSelection">
         @for( subject of subjects ; track $index){
           <mat-option [value]="subject.name"> {{ subject.name}} </mat-option>
         }
       </mat-select>
     </mat-form-field>
     <mat-action-row>
-      <button mat-button> Confirmer </button>
+      <button mat-button (click)="deleteSubject()"> Confirmer </button>
     </mat-action-row>
   </mat-expansion-panel>
   <mat-expansion-panel>
@@ -33,7 +33,7 @@
     </mat-expansion-panel-header>
     <mat-form-field>
       <mat-label>Choisir un sujet</mat-label>
-      <mat-select>
+      <mat-select [(ngModel)]="renameSubjectSelection">
         @for( subject of subjects ; track $index){
           <mat-option [value]="subject.name"> {{ subject.name}} </mat-option>
         }
@@ -41,10 +41,10 @@
     </mat-form-field>
     <mat-form-field>
       <mat-label>Nouveau nom</mat-label>
-      <input matInput/>
+      <input matInput [(ngModel)]="renameSubjectInput"/>
     </mat-form-field>
     <mat-action-row>
-      <button mat-button> Confirmer </button>
+      <button mat-button (click)="renameSubject()"> Confirmer </button>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>

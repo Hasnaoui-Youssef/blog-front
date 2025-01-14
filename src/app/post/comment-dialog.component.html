@@ -1,0 +1,14 @@
+<mat-dialog-content>
+    <mat-form-field>
+        <mat-label>Auteur</mat-label>
+        <input matInput [(ngModel)]="author" class="rounded-md"/>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Contenu</mat-label>
+        <textarea matInput [(ngModel)]="content"></textarea>
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="onNoClick()"> Annuler </button>
+    <button mat-button [mat-dialog-close]="[author(), content()]"> Confirmer </button>
+</mat-dialog-actions>

@@ -1,0 +1,18 @@
+:host {
+  .mat-mdc-card-content{
+    display: flex;
+    flex-direction: column;
+  }
+  .mat-mdc-form-field{
+    width : 40%;
+  }
+  .write-post-card{
+    margin-top : 10%;
+  }
+  .content-form-field{
+    width : 70%;
+  }
+  display : flex;
+  flex-direction: column;
+  height: 100%;
+}

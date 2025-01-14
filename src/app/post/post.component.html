@@ -4,17 +4,41 @@
         <mat-card-title> {{ postDetails.title }}</mat-card-title>
         <mat-card-subtitle > {{ postDetails.author }}</mat-card-subtitle>
     </mat-card-header>
-    <mat-divider inset="true"></mat-divider>
+    <mat-divider></mat-divider>
     <mat-card-content class="text-red-300">
+        <div class="post-content-container">
         <p>
             {{ postDetails.content }}
         </p>
+        </div>
+        <mat-divider></mat-divider>
+        <mat-card-actions align="end">
+          <button mat-button (click)="openDialog()">Ajouter un commentaire </button>
+          <button mat-mini-fab (click)="deletePost()"><mat-icon>delete</mat-icon></button>
+        </mat-card-actions>
     </mat-card-content>
+    <mat-divider></mat-divider>
     <mat-card-footer>
-        @for (comment of comments; track $index) {
-            <p>{{comment.author}}</p>
-            <p>{{comment.content}}</p>
-        }
+        <mat-list>
+          @for (comment of comments; track comment) {
+            <mat-list-item lines="5">
+              <mat-grid-list cols="4" rowHeight="50px">
+                <mat-grid-tile colspan="3" rowspan="1">
+                  <span matListItemTitle>{{comment.author}}</span>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="3" rowspan="3">
+                  <p>{{comment.content}}</p>
+                </mat-grid-tile>
+                <mat-grid-tile colspan="1" rowspan="3">
+                  <button mat-mini-fab (click)="deleteComment(comment._id)"><mat-icon>delete_sweep</mat-icon></button>
+                </mat-grid-tile>
+              </mat-grid-list>
+              </mat-list-item>
+              @if($index < comments.length - 1){
+                <mat-divider inset="true"></mat-divider>
+              }
+          }
+        </mat-list>
     </mat-card-footer>
 </mat-card>
 }

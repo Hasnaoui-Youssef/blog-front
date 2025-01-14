@@ -27,10 +27,46 @@ import { ApiService } from '../api.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EditingComponent implements OnInit {
+  deleteSubjectSelection : string = '';
+  renameSubjectSelection : string = '';
+  newSubjectInput : string = '';
+  renameSubjectInput : string = '';
   subjects : { _id : string, name : string}[] = [];
   constructor( private apiService : ApiService ){}
   ngOnInit(): void {
+    this.fetchSubjects();
+  }
+  fetchSubjects(){
       this.apiService.getSubjects().subscribe((data : any) => this.subjects = data.map((elem : any) => ({ _id : elem._id, name : elem.name })));
+  }
+  addSubject(){
+    const input = this.newSubjectInput.trim();
+    if(input.length === 0){
+      return;
+    }
+    this.apiService.createSubject(input).subscribe((_ : any) =>{
+      this.fetchSubjects();
+      this.newSubjectInput = '';
+    });
+  }
+  deleteSubject(){
+    const selection = this.deleteSubjectSelection;
+    this.apiService.deleteSubject(selection).subscribe((_ : any) => {
+      this.fetchSubjects();
+      this.deleteSubjectSelection = '';
+    });
+  }
+  renameSubject(){
+    const selection = this.renameSubjectSelection;
+    const input = this.renameSubjectInput.trim();
+    if(input.length === 0){
+      return;
+    }
+    this.apiService.renameSubject(selection, input)?.subscribe((_ : any) => {
+      this.fetchSubjects();
+      this.renameSubjectInput = '';
+      this.renameSubjectSelection = '';
+    })
   }
 }
 

@@ -1,1 +1,30 @@
-<p>write-post works!</p>
+<mat-card appearance="outlined" class="write-post-card">
+  <mat-card-header style="padding-bottom: 16px;">
+    <mat-card-title> Ecrire un blog !</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-form-field>
+      <mat-label>Titre</mat-label>
+      <input matInput [(ngModel)]="title" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Auteur</mat-label>
+      <input matInput [(ngModel)]="author" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Select</mat-label>
+      <mat-select [(ngModel)]="subject" >
+        @for(item of subjects; track $index){
+        <mat-option [value]="item.name">{{item.name}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="content-form-field">
+      <mat-label>Contenu</mat-label>
+      <textarea matInput [(ngModel)]="content" rows="5" ></textarea>
+    </mat-form-field>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-raised-button (click)="createPost()"> Confirmer </button>
+  </mat-card-actions>
+</mat-card>
