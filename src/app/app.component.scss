@@ -3,6 +3,7 @@
 :host {
   @include mat.sidenav-overrides((
     container-background-color : var(--mat-sys-secondary-container),
+    content-background-color : var(--mat-sys-tertiary)
   ));
   @include mat.list-overrides((
     list-item-label-text-color : var(--mat-sys-on-secondary-container),
@@ -10,7 +11,7 @@
 }
 
 h1{
-  color : var(--mat-sys-on-primary-container);
+  color : var(--mat-sys-on-tertiary-container);
   text-align: center;
 }
 .title-nav {

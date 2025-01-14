@@ -1,5 +1,21 @@
 @import '../styles/animations.scss';
 
+:host{
+  display: grid;
+  place-items: center; /* Centers both horizontally and vertically */
+  min-height: 100vh;   /* Ensures full viewport height */
+  text-align: center;
+}
+
 .page-title{
-  @include animated-text();
+  font-size : 4rem;
+}
+.blurred-box{
+  background: rgb(255 255 255 / 26%);
+  border-radius: 10px;
+  border: 1px solid rgb(255 255 255 / 15%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  min-width: 400px;
+  min-height: 250px;
 }

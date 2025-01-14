@@ -20,7 +20,7 @@ export interface DialogData{
 
 @Component({
   selector: 'app-home',
-  imports: [ MatButtonModule, RouterLink],
+  imports: [ MatButtonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })

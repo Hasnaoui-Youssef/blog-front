@@ -14,17 +14,17 @@
 
 html {
   color-scheme: light dark;
-  background: var(--mat-sys-surface);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   @include mat.theme((
-    color: mat.$azure-palette,
+    color: mat.$violet-palette,
     typography: Noto Sans Display,
     density: 0
   ));
 }
 body {
   color: var(--mat-sys-on-surface);
+  background: var(--mat-sys-tertiary);
   font-family : Noto Sans Display;
   min-height: 100vh;
   margin : 0;

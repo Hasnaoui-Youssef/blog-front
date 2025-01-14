@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatListModule} from '@angular/material/list'
 import { MatIconModule } from '@angular/material/icon'
 import { MatExpansionModule } from '@angular/material/expansion'
 import { MatButtonModule } from '@angular/material/button';
+import { ApiService } from './api.service';
 
 interface SideNavElement {
   title : string;
@@ -19,8 +20,16 @@ interface SideNavElement {
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'front';
+  subjectWithLinks : SideNavElement[] = [];
+  constructor(private readonly apiService : ApiService){}
+  ngOnInit(): void {
+     this.apiService.getSubjects().subscribe((data : any) =>{
+        this.subjectWithLinks = data.map((elem : any) => ({ title : elem.name, link : '/subject'}));
+        this.sideNavComponent[3].children = this.subjectWithLinks;
+     });
+  }
   sideNavComponent : SideNavElement[] = [
     {
       title : "Accueil",
@@ -41,10 +50,6 @@ export class AppComponent {
       title : "Sujets",
       icon : "category",
       children : [
-        {
-          title : "Aslema",
-          link : "/subject",
-        }
       ]
     },
   ]
