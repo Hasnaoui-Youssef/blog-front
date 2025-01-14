@@ -17,13 +17,37 @@
     overflow: hidden;
     text-overflow: ellipsis;
     min-height : 100px;
+    width : 100%;
+  }
+  ::ng-deep .content-form-field{
+    width : 100%;
   }
   span{
     color : var(--mat-sys-secondary);
   }
-  color : var(--mat-sys-on-primary-container)
+  button + button {
+    margin-left : 2px;
+  }
+  color : var(--mat-sys-on-primary-container);
+  margin-bottom: 5px;
 }
-::ng-deep mat-grid-tile .mat-grid-tile-content{
-  align-items: flex-start;
-  justify-content: start;
+.comment-card-container{
+  .comment-content-container{
+    display:inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width : 50%;
+  }
+  ::ng-deep .content-form-field{
+    width : 100%;
+  }
+  span{
+    color : var(--mat-sys-secondary);
+  }
+  button + button {
+    margin-left : 2px;
+  }
+  color : var(--mat-sys-on-primary-container);
+  margin-bottom: 5px;
+  width : 80%;
 }

@@ -35,12 +35,13 @@
         </mat-card-actions>
     </mat-card-footer>
 </mat-card>
-        <mat-card>
+        <mat-card class="comment-card-container">
           @for (comment of comments; track $index) {
                 <mat-card-header>
                   <span matListItemTitle>{{comment.author}}</span>
                 </mat-card-header>
                 <mat-card-content>
+                  <div class="comment-content-container">
                   @if(!isCommentEdit){
                     <p>{{comment.content}}</p>
                   }
@@ -50,6 +51,7 @@
                      <textarea matInput [(ngModel)]="commentContent" rows="2" ></textarea>
                    </mat-form-field>
                   }
+                  </div>
                 </mat-card-content>
                 <mat-card-actions align="end">
                   @if(!isCommentEdit){
