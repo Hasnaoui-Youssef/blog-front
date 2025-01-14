@@ -16,7 +16,7 @@ import {MatGridListModule} from '@angular/material/grid-list'
 
 @Component({
   selector: 'app-post',
-  imports: [MatCardModule, MatDividerModule, MatButtonModule, MatListModule,MatIconModule, MatGridListModule],
+  imports: [MatCardModule, MatDividerModule, MatButtonModule, MatListModule,MatIconModule, MatGridListModule, MatFormFieldModule, FormsModule, MatInputModule],
   templateUrl: './post.component.html',
   styleUrl: './post.component.scss'
 })
@@ -25,11 +25,18 @@ export class PostComponent implements OnInit {
   postDetails : any;
   comments : any[] = [];
 
+  isCommentEdit : boolean = false;
+  commentEditIndex : number = 0;
+  isPostEdit : boolean = false;
+
+  postContent : string = '';
+  commentContent : string = '';
+
   readonly dialog = inject(MatDialog);
   readonly author = signal('');
   readonly content = signal('');
   openDialog(): void {
-    const dialogRef = this.dialog.open(AddSubjectDialog, {
+    const dialogRef = this.dialog.open(AddCommentDialog, {
       data : { author : this.author(), content : this.content() }
     });
 
@@ -59,6 +66,35 @@ export class PostComponent implements OnInit {
       this.router.navigateByUrl('/subject');
     })
   }
+  editPostContent() : void {
+    this.isPostEdit = true;
+    this.postContent = this.postDetails.content;
+  }
+  cancelPostEdit() : void {
+    this.isPostEdit = false;
+    this.postContent = '';
+  }
+  editCommentContent(index : number) : void {
+    if(this.isCommentEdit) return;
+    this.isCommentEdit = true;
+    this.commentContent = this.comments[index].content;
+  }
+  cancelCommentEdit(){
+    this.isCommentEdit = false;
+    this.commentContent = '';
+  }
+  confirmPostEdit() : void {
+    const content = this.postContent.trim();
+    this.isPostEdit = false;
+    if(!content) return;
+    this.apiService.updatePost(this.postId, { content }).subscribe((_) => this.loadPost());
+  }
+  confirmCommentEdit(index : number) : void {
+    const content = this.commentContent.trim();
+    this.isCommentEdit=false;
+    if(!content) return;
+    this.apiService.updateComment(this.postId, this.comments[index]._id, content).subscribe((_) => this.loadPost());
+  }
 }
 @Component({
   templateUrl : "./comment-dialog.component.html",
@@ -73,8 +109,8 @@ export class PostComponent implements OnInit {
     MatButtonModule,
   ],
 })
-export class AddSubjectDialog {
-  readonly dialogRef = inject(MatDialogRef<AddSubjectDialog>);
+export class AddCommentDialog {
+  readonly dialogRef = inject(MatDialogRef<AddCommentDialog>);
   readonly data = inject<CreateCommentDto>(MAT_DIALOG_DATA);
   readonly author = model(this.data.author);
   readonly content = model(this.data.content);
